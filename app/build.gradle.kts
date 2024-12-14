@@ -1,9 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.ksp)
     alias(libs.plugins.kotlin.parcelize)
     alias(libs.plugins.navigation.safeargs)
+    id("kotlin-kapt")
 }
 
 android {
@@ -21,7 +21,6 @@ android {
     }
 
     buildFeatures{
-        //noinspection DataBindingWithoutKapt
         dataBinding = true
     }
 
@@ -55,8 +54,6 @@ dependencies {
 
     implementation(libs.androidx.room)
     implementation(libs.androidx.room.runtime)
-    annotationProcessor(libs.androidx.room.compiler)
-    ksp(libs.androidx.room.compiler)
 
     implementation(libs.androidx.lifecycle.viewmodel)
     implementation(libs.androidx.lifecycle.livedata)
@@ -65,6 +62,7 @@ dependencies {
     implementation(libs.kotlin.stdlib)
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.androidx.databinding)
 
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
